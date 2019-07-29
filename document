@@ -23,5 +23,7 @@ My Three PC_hack Exprience:
                   
         II.驱动处理过程简述：(以上安装完成之后系统声卡未驱动，cpu变频不正常，始终3.3ghz运行)
             ALC892：用voodooHDA 2.9.2最新版放入clover中即可
-            cpu变频：正在用ssdtprgen调试。。。
-  
+            cpu变频：正在用ssdtprgen调试。。。采用ssdtptgen.sh生成的ssdt.dsl文件编译为ssdt.aml文件之后，配合x79平台的cpu变频补丁：
+                    FF0F842DtoFF0F852D   3E7539to3E9090   0100010F84to0100010F85   7511B9toEB11B9  C974160F324825FF0F000048toC9EB160F324825FF0F000048
+                    C9740C0F3283E01F4289443BtoC9EB0C0F3283E01F4289443B   01745Fto01EB5F
+                    之后，再勾选clover-acpi中的drop-oem，fix-shutdown，plugintype=1； kernelandpextpm中的appleintelcpupm勾选即可重启。
