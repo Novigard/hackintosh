@@ -1,0 +1,27 @@
+My Three PC_hack Exprience:
+  1 MSI 16F3(I7 3610qm ivy bridge   HD4000   GTX670M  LITION_T9_256G  KILLER_ETHERNET  BCM94360HMB   ALC892  HM77_MB ...)
+  2 DELL_OPTILIEX(I7 8700  Coffee Lake  UHD630 LENOVO_SL700_1TB INTEL_ETHERNET BCM94360CS2  ALC255  Q370 ...)
+  3 ASUS_platform (I7 3960X  Sandy Bridge  GTX770  SM961_256G  960EVO_250G INTEL_ETHERNET  ALC892  P9X79PRO ...)
+  
+  
+  
+  
+  
+  
+      3 ASUS_platform :
+        
+        I.安装过程简述：（基于clover引导器）
+            设备：一个SM961的256G硬盘（全新空盘）；一个960EVO_250g带有正常运行的win10系统硬盘；一个etcher导入好自带clover系统的64GB（USB3.0）U盘
+                  主机一台，显示器一台。
+            操作：装好硬盘引导系统，随即卡在PCI configuration begin或者Fake——SMC等等地方，随机出现白点卡屏。此时切换硬盘盒中的硬盘为960evo进入win10
+                  用win下DG进如U盘EFI分区改config.plist文件：
+                  1  SMBIOS机型改为MacPro6，1  
+                  2  启动参数npci=0x3000加上
+                  3  加上-no_compact_check启动参数
+                  经过以上操作正确进入了安装界面，此时硬盘文件系统格式化为APFS(ENCURPTY),此时安装出现了提示缺少firmware partition的提示，磁盘灰色不
+                  可选，此时重新格式化为纯APFS格式，正常安装完成。
+                  
+        II.驱动处理过程简述：(以上安装完成之后系统声卡未驱动，cpu变频不正常，始终3.3ghz运行)
+            ALC892：用voodooHDA 2.9.2最新版放入clover中即可
+            cpu变频：正在用ssdtprgen调试。。。
+  
